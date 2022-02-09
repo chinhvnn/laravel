@@ -159,75 +159,46 @@
 
 @endsection @section('script')
 <script>
-    var sophong = $(".act-roomNum").val();
-    var gia = $(".act-price").val();
+    function tinhGiaPhong() {
+            var sophong = $(".act-roomNum").val();
+            var gia = $(".act-price").val();
 
-    var start = Date.parse($(".act-startDate").val());
-    var end = Date.parse($(".act-endDate").val());
-    var ngaythue = (end - start) / (60 * 60 * 24);
-    $(".act-date").val(ngaythue);
+            var start = Date.parse($(".act-startDate").val());
+            var end = Date.parse($(".act-endDate").val());
+            var ngaythue = Math.floor((end - start) / (60 * 60 * 24 * 1000));
+            $(".act-date").val(ngaythue);
 
-    var tongtien = sophong * gia * ngaythue;
-    $(".act-totalPrice").val(tongtien);;
+            var tongtien = sophong * gia * ngaythue;
+            $(".act-totalPrice").val(tongtien);;
 
-    var room_id = $("#room_id").val();
-    $(".act-date").val(ngaythue);
-    if (room_id == 1) {
-        $(".act-price").val(750);
-        $("#act-desRoom").text("Mô tả: Phòng loại 1");
-        $("#act-detailRoom").attr("href", "https://www.w3schools.com/jquery/");
-    }
-    if (room_id == 2) {
-        $(".act-price").val(250);
-        $("#act-desRoom").text("Mô tả: Phòng loại 2");
-        $("#act-detailRoom").attr("href", "https://www.w3schools.com/jquery/");
-    }
-    if (room_id == 3) {
-        $(".act-price").val(200);
-        $("#act-desRoom").text("Mô tả: Phòng loại 3");
-        $("#act-detailRoom").attr("href", "https://www.w3schools.com/jquery/");
-    }
-    if (room_id == 4) {
-        $(".act-price").val(200);
-        $("#act-desRoom").text("Mô tả: Phòng loại 4");
-        $("#act-detailRoom").attr("href", "https://www.w3schools.com/jquery/");
-    }
-
-    //khi thay doi nut
-    $(".act-roomNum, .act-startDate, .act-endDate, #room_id").change(function() {
-        var sophong = $(".act-roomNum").val();
-        var gia = $(".act-price").val();
-
-        var start = Date.parse($(".act-startDate").val());
-        var end = Date.parse($(".act-endDate").val());
-        var ngaythue = (end - start) / (60 * 60 * 24);
-        $(".act-date").val(ngaythue);
-
-        var tongtien = sophong * gia * ngaythue;
-        $(".act-totalPrice").val(tongtien);;
-
-        var room_id = $("#room_id").val();
-        if (room_id == 1) {
-            $(".act-price").val('750');
-            $("#act-desRoom").text("Mô tả: Phòng loại 1");
-            $("#act-detailRoom").attr("href", "https://www.w3schools.com/jquery/");
+            var room_id = $("#room_id").val();
+            //thay the bang cau lenh for cho tuong minh
+            $(".act-date").val(ngaythue);
+            if (room_id == 1) {
+                $(".act-price").val(750);
+                $("#act-desRoom").text("Mô tả: Phòng loại 1");
+                $("#act-detailRoom").attr("href", "#");
+            }
+            if (room_id == 2) {
+                $(".act-price").val(250);
+                $("#act-desRoom").text("Mô tả: Phòng loại 2");
+                $("#act-detailRoom").attr("href", "#");
+            }
+            if (room_id == 3) {
+                $(".act-price").val(200);
+                $("#act-desRoom").text("Mô tả: Phòng loại 3");
+                $("#act-detailRoom").attr("href", "#");
+            }
+            if (room_id == 4) {
+                $(".act-price").val(200);
+                $("#act-desRoom").text("Mô tả: Phòng loại 4");
+                $("#act-detailRoom").attr("href", "#");
+            }
         }
-        if (room_id == 2) {
-            $(".act-price").val(250);
-            $("#act-desRoom").text("Mô tả: Phòng loại 2");
-            $("#act-detailRoom").attr("href", "https://www.w3schools.com/jquery/");
-        }
-        if (room_id == 3) {
-            $(".act-price").val(200);
-            $("#act-desRoom").text("Mô tả: Phòng loại 3");
-            $("#act-detailRoom").attr("href", "https://www.w3schools.com/jquery/");
-        }
-        if (room_id == 4) {
-            $(".act-price").val(200);
-            $("#act-desRoom").text("Mô tả: Phòng loại 4");
-            $("#act-detailRoom").attr("href", "https://www.w3schools.com/jquery/");
-        }
-    });
+        //khi thay doi nut
+        $(".act-roomNum, .act-startDate, .act-endDate, #room_id").change(function() {
+            tinhGiaPhong();
+        });
 </script>
 
 
